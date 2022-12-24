@@ -4,10 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../../constants.dart';
 
 class LoginLogoColumn extends StatelessWidget {
-  const LoginLogoColumn({
-    super.key,
-  });
-
   @override
   Widget build(BuildContext context) {
     return Expanded(

@@ -5,10 +5,6 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 
 class LoginTopDescription extends StatelessWidget {
-  const LoginTopDescription({
-    super.key,
-  });
-
   @override
   Widget build(BuildContext context) {
     return Container(

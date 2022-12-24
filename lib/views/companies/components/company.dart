@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_print
+// ignore_for_file: prefer_const_constructors, avoid_print, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 
@@ -10,8 +10,7 @@ class Company extends StatelessWidget {
   final int companyId;
 
   const Company(
-      {super.key,
-      required this.logoImgSrc,
+      {required this.logoImgSrc,
       required this.companyName,
       required this.companyId});
 
@@ -35,9 +34,9 @@ class Company extends StatelessWidget {
             flex: 1,
             fit: FlexFit.tight,
             child: Text(
+              companyName,
               textAlign: TextAlign.start,
               overflow: TextOverflow.ellipsis,
-              companyName,
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                   fontSize: 20,
                   color: companyTextColor,

@@ -22,8 +22,8 @@ class CompaniesFooter extends StatelessWidget {
                           backgroundColor: primaryBgColor),
                       onPressed: () {},
                       child: Text(
-                        textAlign: TextAlign.center,
                         'Manage Companies',
+                        textAlign: TextAlign.center,
                       )),
                 ),
               )
@@ -39,8 +39,8 @@ class CompaniesFooter extends StatelessWidget {
                 child: Flexible(
                   flex: 1,
                   child: Text(
-                    maxLines: 3,
                     'To manage your companies go to the control panel through the browser.',
+                    maxLines: 3,
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 14),
                   ),

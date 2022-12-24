@@ -26,10 +26,6 @@ class LoginView extends StatelessWidget {
 }
 
 class Formulario extends StatefulWidget {
-  const Formulario({
-    super.key,
-  });
-
   @override
   State<Formulario> createState() => _FormularioState();
 }
