@@ -1,18 +1,34 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_const_constructors
 
-import 'package:delybox/views/login_view.dart';
+import 'package:delybox/views/companies/companies_view.dart';
+import 'package:delybox/views/login/login_view.dart';
+import 'package:delybox/views/main/main_view.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'constants.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Delybox',
-      home: LoginView(),
+      theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: secondaryBgColor,
+        textTheme: GoogleFonts.poppinsTextTheme(),
+        canvasColor: secondaryBgColor,
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => MainView(page: LoginView()),
+        '/companies': (context) => MainView(page: CompaniesView()),
+      },
     );
   }
 }
