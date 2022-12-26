@@ -26,7 +26,7 @@ class _ListOfCompaniesState extends State<ListOfCompanies> {
           children: [
             Company(
                 logoImgSrc: 'assets/images/geiselburger.png',
-                companyName: 'Geisel Burguer',
+                companyName: 'Geisel Burger',
                 companyId: 0),
             Company(
                 logoImgSrc: 'assets/images/pizza083.png',
