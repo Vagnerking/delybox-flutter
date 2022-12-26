@@ -9,10 +9,6 @@ import 'components/login_logo_column.dart';
 import 'components/login_top_description.dart';
 
 class LoginView extends StatelessWidget {
-  LoginView() {
-    AuthController.instance.loginScreen();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -130,6 +126,8 @@ class _FormularioState extends State<Formulario> {
                                       primaryBgColor)),
                               onPressed: () {
                                 print('clicked on button login');
+                                AuthController.instance
+                                    .companiesScreen(context);
                                 Navigator.of(context).pushNamed('/companies');
                               },
                               child: const Text(

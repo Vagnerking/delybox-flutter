@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable, avoid_print, use_key_in_widget_constructors
 
+import 'package:delybox/controller/company_controller.dart';
+import 'package:delybox/views/main/components/main_drawer.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -16,15 +18,20 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
+  AuthController authController = AuthController.instance;
+  CompanyController companyController = CompanyController.instance;
+
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: widget.authController,
       builder: (context, child) {
         return Scaffold(
-          appBar: (widget.authController.loginStatus ==
-                      LoginStatus.companies) ||
-                  (widget.authController.loginStatus == LoginStatus.logged)
+          drawer: authController.loginStatus == LoginStatus.logged
+              ? MainDrawer()
+              : null,
+          appBar: (widget.authController.loginStatus == LoginStatus.companies ||
+                  widget.authController.loginStatus == LoginStatus.logged)
               ? AppBar(
                   toolbarHeight: 65,
                   backgroundColor: primaryBgColor,
@@ -34,7 +41,7 @@ class _MainViewState extends State<MainView> {
                           ? IconButton(
                               onPressed: () {
                                 print('clicked on logout');
-                                Navigator.of(context).pushNamed('/');
+                                authController.loginScreen(context);
                               },
                               icon: Icon(Icons.logout))
                           : null,

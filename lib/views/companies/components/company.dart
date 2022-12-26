@@ -1,15 +1,20 @@
-// ignore_for_file: prefer_const_constructors, avoid_print, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print, use_key_in_widget_constructors, must_be_immutable
 
+import 'package:delybox/controller/auth_controller.dart';
+import 'package:delybox/controller/company_controller.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 import '../../../responsive.dart';
 
 class Company extends StatelessWidget {
+  CompanyController companyController = CompanyController.instance;
+  AuthController authController = AuthController.instance;
+
   final String logoImgSrc, companyName;
   final int companyId;
 
-  const Company(
+  Company(
       {required this.logoImgSrc,
       required this.companyName,
       required this.companyId});
@@ -47,6 +52,9 @@ class Company extends StatelessWidget {
               iconSize: 40,
               onPressed: () {
                 print('Trying login on company $companyName');
+                companyController.companyLogin(
+                    companyName, logoImgSrc, companyId);
+                authController.loggedScreen(context);
               },
               icon: Icon(Icons.login))
         ],

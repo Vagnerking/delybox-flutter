@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_const_constructors
 
 import 'package:delybox/views/companies/companies_view.dart';
+import 'package:delybox/views/dashboard/dashboard.dart';
 import 'package:delybox/views/login/login_view.dart';
 import 'package:delybox/views/main/main_view.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,9 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => MainView(page: LoginView()),
         '/companies': (context) => MainView(page: CompaniesView()),
+        '/dashboard': (context) => MainView(page: Dashboard()),
       },
+      // home: MainView(page: Dashboard()),
     );
   }
 }
