@@ -36,14 +36,11 @@ class CompaniesFooter extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                child: Flexible(
-                  flex: 1,
-                  child: Text(
-                    'To manage your companies go to the control panel through the browser.',
-                    maxLines: 3,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 14),
-                  ),
+                child: Text(
+                  'To manage your companies go to the control panel through the browser.',
+                  maxLines: 3,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 14),
                 ),
               )
             ],

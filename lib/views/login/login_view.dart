@@ -11,13 +11,18 @@ import 'components/login_top_description.dart';
 class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: Row(
-      children: [
-        if (!Responsive.isMobile(context)) LoginLogoColumn(),
-        Formulario()
-      ],
-    ));
+    var size = MediaQuery.of(context).size;
+
+    return SizedBox(
+      height: size.height,
+      width: size.width,
+      child: Row(
+        children: [
+          if (!Responsive.isMobile(context)) LoginLogoColumn(),
+          Formulario()
+        ],
+      ),
+    );
   }
 }
 
@@ -45,10 +50,8 @@ class _FormularioState extends State<Formulario> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      flex: 1,
       child: Container(
         alignment: Alignment.center,
-        height: double.infinity,
         padding: EdgeInsets.all(defaultPadding),
         color: Colors.white,
         child: SingleChildScrollView(

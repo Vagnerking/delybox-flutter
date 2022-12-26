@@ -23,48 +23,43 @@ class _MainViewState extends State<MainView> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: widget.authController,
-      builder: (context, child) {
-        return Scaffold(
-          drawer: authController.loginStatus == LoginStatus.logged
-              ? MainDrawer()
-              : null,
-          appBar: (widget.authController.loginStatus == LoginStatus.companies ||
-                  widget.authController.loginStatus == LoginStatus.logged)
-              ? AppBar(
-                  toolbarHeight: 65,
-                  backgroundColor: primaryBgColor,
-                  elevation: 5,
-                  leading:
-                      widget.authController.loginStatus == LoginStatus.companies
-                          ? IconButton(
-                              onPressed: () {
-                                print('clicked on logout');
-                                authController.loginScreen(context);
-                              },
-                              icon: Icon(Icons.logout))
-                          : null,
-                  actions: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Text('Username'),
-                          CircleAvatar(
-                            radius: 30, // Image radius
-                            backgroundImage:
-                                Image.asset('assets/images/user.jpg').image,
-                          ),
-                        ],
+    return Scaffold(
+      drawer: authController.loginStatus == LoginStatus.logged
+          ? MainDrawer()
+          : null,
+      appBar: (widget.authController.loginStatus == LoginStatus.companies ||
+              widget.authController.loginStatus == LoginStatus.logged)
+          ? AppBar(
+              toolbarHeight: 65,
+              backgroundColor: primaryBgColor,
+              elevation: 5,
+              leading:
+                  widget.authController.loginStatus == LoginStatus.companies
+                      ? IconButton(
+                          onPressed: () {
+                            print('clicked on logout');
+                            authController.loginScreen(context);
+                          },
+                          icon: Icon(Icons.logout))
+                      : null,
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Text('Username'),
+                      CircleAvatar(
+                        radius: 30, // Image radius
+                        backgroundImage:
+                            Image.asset('assets/images/user.jpg').image,
                       ),
-                    ),
-                  ],
-                )
-              : null,
-          body: SafeArea(child: widget.page),
-        );
-      },
+                    ],
+                  ),
+                ),
+              ],
+            )
+          : null,
+      body: SafeArea(child: widget.page),
     );
   }
 }
