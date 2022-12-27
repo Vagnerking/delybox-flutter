@@ -1,7 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_const_constructors
 
 import 'package:delybox/app_providers.dart';
-import 'package:delybox/providers/auth_provider.dart';
 import 'package:delybox/views/companies/companies_view.dart';
 import 'package:delybox/views/dashboard/dashboard.dart';
 import 'package:delybox/views/login/login_view.dart';

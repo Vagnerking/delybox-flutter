@@ -132,7 +132,8 @@ class _FormularioState extends State<Formulario> {
                                         primaryBgColor)),
                                 onPressed: () {
                                   print('clicked on button login');
-                                  authProvider.loginStatus = LoginStatus.logged;
+                                  authProvider.loginStatus =
+                                      LoginStatus.companies;
                                   Navigator.of(context).pushNamed('/companies');
                                 },
                                 child: const Text(
