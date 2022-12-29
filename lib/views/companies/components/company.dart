@@ -25,7 +25,7 @@ class Company extends StatelessWidget {
         margin: EdgeInsets.only(bottom: defaultPadding),
         padding: EdgeInsets.all(defaultPadding),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(5),
             border: Border.all(width: 1, color: secondaryBgColor)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

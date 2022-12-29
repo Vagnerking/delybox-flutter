@@ -39,23 +39,29 @@ class _InputCalendarState extends State<InputCalendar> {
                 Text(
                   'Select date',
                 ),
-                Container(
-                  padding: EdgeInsets.only(left: defaultPadding / 2),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      border: Border.all(width: 2, color: defaultBorderColor)),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(dataSelecionada),
-                        IconButton(
-                            alignment: Alignment.centerRight,
-                            onPressed: () {
-                              openCalendarDatePicker();
-                            },
-                            icon: Icon(Icons.edit_calendar)),
-                      ]),
+                MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    child: Container(
+                      height: 45,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          border:
+                              Border.all(width: 2, color: defaultBorderColor)),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(dataSelecionada),
+                            Icon(
+                              Icons.edit_calendar,
+                            ),
+                          ]),
+                    ),
+                    onTap: () => openCalendarDatePicker(),
+                  ),
                 ),
               ],
             )),

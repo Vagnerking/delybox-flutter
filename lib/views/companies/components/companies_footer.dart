@@ -8,7 +8,7 @@ class CompaniesFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(defaultPadding * 2),
+      margin: EdgeInsets.all(defaultPadding),
       constraints: BoxConstraints(maxHeight: 150, maxWidth: 740),
       child: Column(
         children: [

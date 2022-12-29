@@ -8,19 +8,9 @@ import '../../../constants.dart';
 class LoginLogoColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: Container(
-        color: primaryBgColor,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              'assets/images/logo-white.svg',
-            )
-          ],
-        ),
-      ),
+    return SvgPicture.asset(
+      'assets/images/logo-white.svg',
+      fit: BoxFit.none,
     );
   }
 }

@@ -2,9 +2,8 @@
 
 import 'package:delybox/app_providers.dart';
 import 'package:delybox/views/companies/companies_view.dart';
-import 'package:delybox/views/dashboard/dashboard.dart';
+import 'package:delybox/views/dashboard/dashboard_view.dart';
 import 'package:delybox/views/login/login_view.dart';
-import 'package:delybox/views/main/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -31,9 +30,9 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => MainView(page: LoginView()),
-          '/companies': (context) => MainView(page: CompaniesView()),
-          '/dashboard': (context) => MainView(page: Dashboard()),
+          '/': (context) => LoginView(),
+          '/companies': (context) => CompaniesView(),
+          '/dashboard': (context) => DashboardView(),
         },
         // home: MainView(page: Dashboard()),
       ),
