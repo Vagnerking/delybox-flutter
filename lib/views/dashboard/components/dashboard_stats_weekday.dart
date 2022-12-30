@@ -36,22 +36,30 @@ class StatsWeekDay extends StatelessWidget {
               height: defaultPadding,
             ),
             Flexible(
+              flex: 1,
               child: SfCartesianChart(
-                primaryXAxis: CategoryAxis(),
+                legend: Legend(overflowMode: LegendItemOverflowMode.none),
+                primaryXAxis: CategoryAxis(
+                  title: AxisTitle(
+                      text: 'Week Days',
+                      textStyle:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                ),
                 primaryYAxis: CategoryAxis(isVisible: false),
                 series: <CartesianSeries>[
                   ColumnSeries<DayOfWeek, String>(
-                      dataLabelSettings: DataLabelSettings(
+                    dataLabelSettings: DataLabelSettings(
                         isVisible: true,
                         alignment: ChartAlignment.center,
                         labelAlignment: ChartDataLabelAlignment.middle,
-                      ),
-                      xAxisName: 'Days',
-                      animationDelay: 200,
-                      dataSource: getColumnData(),
-                      xValueMapper: (DayOfWeek dow, _) => dow.x,
-                      yValueMapper: (DayOfWeek dow, _) => dow.y,
-                      pointColorMapper: (DayOfWeek dow, _) => dow.color),
+                        textStyle: TextStyle(color: Colors.white)),
+                    xAxisName: 'Days',
+                    animationDelay: 200,
+                    dataSource: getColumnData(),
+                    xValueMapper: (DayOfWeek dow, _) => dow.x,
+                    yValueMapper: (DayOfWeek dow, _) => dow.y,
+                    pointColorMapper: (DayOfWeek dow, _) => dow.color,
+                  ),
                 ],
               ),
             )

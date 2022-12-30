@@ -4,7 +4,7 @@ import 'dart:ui';
 
 class DayOfWeek {
   String x;
-  double? y;
+  int? y;
   Color color;
 
   DayOfWeek(this.x, this.y, this.color);
@@ -12,13 +12,13 @@ class DayOfWeek {
 
 dynamic getColumnData() {
   List<DayOfWeek> columnData = <DayOfWeek>[
-    DayOfWeek('Seg', 40, Color(0xFFFFEF5F)),
-    DayOfWeek('Ter', 25, Color(0xFFFF5A5A)),
-    DayOfWeek('Qua', 15, Color(0xFFB1FFF1)),
-    DayOfWeek('Qui', 50, Color(0xFFACAAFF)),
-    DayOfWeek('Sex', 60, Color(0xFFFFA9F1)),
-    DayOfWeek('Sab', 70, Color(0xFF98FFA2)),
-    DayOfWeek('Dom', 90, Color(0xFF9ACFFF)),
+    DayOfWeek('Mon', 40, Color(0xFF46A6FF)),
+    DayOfWeek('Tue', 25, Color(0xFFFF7E46)),
+    DayOfWeek('Wed', 15, Color(0xFF9746FF)),
+    DayOfWeek('Thu', 50, Color(0xFFFF465C)),
+    DayOfWeek('Fri', 60, Color(0xFF73BCFF)),
+    DayOfWeek('Sat', 70, Color(0xFFFFA47C)),
+    DayOfWeek('Sun', 90, Color(0xFFBB85FF)),
   ];
 
   return columnData;

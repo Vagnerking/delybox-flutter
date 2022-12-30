@@ -3,13 +3,16 @@
 import 'package:delybox/components/header_text_view.dart';
 import 'package:delybox/constants.dart';
 import 'package:delybox/providers/auth_provider.dart';
+import 'package:delybox/responsive.dart';
 import 'package:delybox/views/body_container/body_container.dart';
 import 'package:delybox/views/dashboard/components/dashboard_cards.dart';
 import 'package:delybox/views/dashboard/components/input_calendar.dart';
 import 'package:delybox/views/body_container/components/main_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:provider/provider.dart';
 
+import 'components/dashboard_stats_today.dart';
 import 'components/dashboard_stats_weekday.dart';
 
 class DashboardView extends StatefulWidget {
@@ -46,23 +49,47 @@ class _DashboardViewState extends State<DashboardView> {
           ),
           body: SingleChildScrollView(
             child: BodyContainer(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                  HeaderTextView(text: 'Dashboard'),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  HeaderTextView(
+                    text: 'Dashboard',
+                    useBottomPadding: true,
+                    useDivider: true,
+                  ),
                   InputCalendar(),
                   DashboardCards(),
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(vertical: defaultPadding),
                     child: Text(
-                      'View your company statistics',
+                      '- View your company statistics -',
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Color(0xFF9F9F9F)),
                     ),
                   ),
-                  StatsWeekDay()
-                ])),
+                  LayoutGrid(
+                    columnSizes: [
+                      Responsive.isMobile(context) ? 1.fr : 2.fr,
+                      if (!Responsive.isMobile(context)) 1.fr
+                    ],
+                    rowSizes: [auto, auto],
+                    rowGap: defaultPadding,
+                    columnGap: defaultPadding,
+                    children: [StatsWeekDay(), StatsToday()],
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: defaultPadding),
+                    child: Text(
+                      '- View your company ranking -',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Color(0xFF9F9F9F)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       );

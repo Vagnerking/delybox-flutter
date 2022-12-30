@@ -21,7 +21,11 @@ class DashboardCards extends StatelessWidget {
           shrinkWrap: true,
           itemCount: 4,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: Responsive.isMobile(context) ? 2 : 4,
+              crossAxisCount: Responsive.isMiniMobile(context)
+                  ? 1
+                  : Responsive.isMobile(context)
+                      ? 2
+                      : 4,
               crossAxisSpacing: defaultPadding,
               mainAxisSpacing: defaultPadding,
               mainAxisExtent: 165,

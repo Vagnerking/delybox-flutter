@@ -13,7 +13,7 @@ class CardExample {
 
   static List<CardExample> cards = [
     CardExample(30, 'Sends', Color(0xFF46A6FF), Color(0xFF3883C8), Icons.send),
-    CardExample(27, 'Delivered', Color(0xFFFF7E46), Color(0xFFC1622C),
+    CardExample(25, 'Delivered', Color(0xFFFF7E46), Color(0xFFC1622C),
         Icons.delivery_dining_rounded),
     CardExample(03, 'On Route', Color(0xFF9746FF), Color(0xFF652CC1),
         Icons.route_rounded),

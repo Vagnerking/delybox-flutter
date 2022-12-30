@@ -11,6 +11,9 @@ class Responsive extends StatelessWidget {
 
 // This size work fine on my design, maybe you need some customization depends on your design
 
+  static bool isMiniMobile(BuildContext context) =>
+      MediaQuery.of(context).size.width < 350;
+
   // This isMobile, isTablet, isDesktop helep us later
   static bool isMobile(BuildContext context) =>
       MediaQuery.of(context).size.width < 850;

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:delybox/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -8,9 +10,13 @@ class BodyContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(defaultPadding),
-      child: Container(
-        child: child,
+      padding: const EdgeInsets.symmetric(
+          horizontal: defaultPadding, vertical: defaultPadding * 2),
+      child: Center(
+        child: Container(
+          constraints: BoxConstraints(maxWidth: 1360),
+          child: child,
+        ),
       ),
     );
   }
