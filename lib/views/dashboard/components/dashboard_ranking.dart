@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:data_table_2/data_table_2.dart';
 import 'package:delybox/constants.dart';
+import 'package:delybox/models/ranking_deliveryman.dart';
 import 'package:delybox/responsive.dart';
 import 'package:delybox/components/card_white.dart';
 import 'package:flutter/material.dart';
@@ -22,78 +25,86 @@ class DashboardRanking extends StatelessWidget {
             smRatio: Responsive.isMiniMobile(context)
                 ? 6
                 : Responsive.isMobile(context)
-                    ? 3
+                    ? 4
                     : 1,
-            lmRatio: 20,
+            lmRatio: 15,
             horizontalMargin: defaultPadding,
             columns: [
               DataColumn2(
-                label: Text('#'),
+                label: Text(
+                  '#',
+                  style: TextStyle(fontWeight: FontWeight.w500),
+                ),
                 size: ColumnSize.S,
               ),
               DataColumn2(
-                label: Text('Motoca'),
+                label: Text(
+                  'Deliveryman',
+                  style: TextStyle(fontWeight: FontWeight.w600),
+                ),
                 size: ColumnSize.L,
               ),
               DataColumn2(
-                label: Text('Qtd'),
+                label: Text(
+                  'Qty',
+                  style: TextStyle(fontWeight: FontWeight.w600),
+                ),
                 size: ColumnSize.S,
               ),
             ],
-            rows: [
-              DataRow2(
-                cells: [
-                  DataCell(Text('1')),
-                  DataCell(Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 20,
-                        backgroundColor: secondaryBgColor,
+            rows: List.generate(
+                getRankingDashboardToday().length,
+                (index) => DataRow2(cells: [
+                      DataCell(Row(
+                        children: [
+                          Container(
+                            color: index == 0
+                                ? Colors.amber
+                                : index == 1
+                                    ? Colors.black12
+                                    : index == 2
+                                        ? Colors.brown
+                                        : Colors.white,
+                            width: 4,
+                            height: 20,
+                            margin: EdgeInsets.only(right: defaultPadding / 2),
+                          ),
+                          Text('${index + 1}º'),
+                        ],
+                      )),
+                      DataCell(Row(
+                        mainAxisAlignment: Responsive.isMiniMobile(context)
+                            ? MainAxisAlignment.center
+                            : MainAxisAlignment.start,
+                        children: [
+                          CircleAvatar(
+                            radius: 20,
+                            backgroundColor: secondaryBgColor,
+                            backgroundImage: Image.network(
+                                    getRankingDashboardToday()[index]
+                                        .imgNetworkSrc)
+                                .image,
+                          ),
+                          SizedBox(
+                            width: defaultPadding / 2,
+                          ),
+                          if (!Responsive.isMiniMobile(context))
+                            Flexible(
+                              child: Text(
+                                getRankingDashboardToday()[index]
+                                    .deliverymanName,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                        ],
+                      )),
+                      DataCell(
+                        Text(getRankingDashboardToday()[index]
+                            .qtdDeliveries
+                            .toString()),
                       ),
-                      SizedBox(
-                        width: defaultPadding / 2,
-                      ),
-                      Flexible(
-                        child: Text(
-                          'Jacinto Jato no Meu Boiga',
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  )),
-                  DataCell(
-                    Text('20'),
-                  ),
-                ],
-              ),
-              DataRow2(
-                cells: [
-                  DataCell(Text('2')),
-                  DataCell(Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 20,
-                        backgroundColor: secondaryBgColor,
-                      ),
-                      SizedBox(
-                        width: defaultPadding / 2,
-                      ),
-                      Flexible(
-                        child: Text(
-                          'Jacinto Jato no Meu Boiga',
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  )),
-                  DataCell(
-                    Text('20'),
-                  ),
-                ],
-              ),
-            ],
+                    ])),
           ),
         )
       ],
