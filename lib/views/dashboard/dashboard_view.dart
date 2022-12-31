@@ -6,6 +6,7 @@ import 'package:delybox/providers/auth_provider.dart';
 import 'package:delybox/responsive.dart';
 import 'package:delybox/views/body_container/body_container.dart';
 import 'package:delybox/views/dashboard/components/dashboard_cards.dart';
+import 'package:delybox/views/dashboard/components/dashboard_ranking.dart';
 import 'package:delybox/views/dashboard/components/input_calendar.dart';
 import 'package:delybox/views/body_container/components/main_drawer.dart';
 import 'package:flutter/material.dart';
@@ -87,6 +88,7 @@ class _DashboardViewState extends State<DashboardView> {
                       style: TextStyle(color: Color(0xFF9F9F9F)),
                     ),
                   ),
+                  DashboardRanking(),
                 ],
               ),
             ),

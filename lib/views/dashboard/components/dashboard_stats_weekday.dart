@@ -3,7 +3,7 @@
 import 'package:delybox/components/header_text_view.dart';
 import 'package:delybox/constants.dart';
 import 'package:delybox/models/stats_day_of_week.dart';
-import 'package:delybox/responsive.dart';
+import 'package:delybox/components/card_white.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -12,59 +12,43 @@ class StatsWeekDay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 350,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 5,
-            spreadRadius: 1,
-            offset: Offset(0, 3), // changes position of shadow
+    return CardWhite(
+      widget: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          HeaderTextView(text: 'Stats - Week day'),
+          SizedBox(
+            height: defaultPadding,
+          ),
+          Flexible(
+            flex: 1,
+            child: SfCartesianChart(
+              legend: Legend(overflowMode: LegendItemOverflowMode.none),
+              primaryXAxis: CategoryAxis(
+                title: AxisTitle(
+                    text: 'Week Days',
+                    textStyle:
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+              ),
+              primaryYAxis: CategoryAxis(isVisible: false),
+              series: <CartesianSeries>[
+                ColumnSeries<DayOfWeek, String>(
+                  dataLabelSettings: DataLabelSettings(
+                      isVisible: true,
+                      alignment: ChartAlignment.center,
+                      labelAlignment: ChartDataLabelAlignment.middle,
+                      textStyle: TextStyle(color: Colors.white)),
+                  xAxisName: 'Days',
+                  animationDelay: 200,
+                  dataSource: getColumnData(),
+                  xValueMapper: (DayOfWeek dow, _) => dow.x,
+                  yValueMapper: (DayOfWeek dow, _) => dow.y,
+                  pointColorMapper: (DayOfWeek dow, _) => dow.color,
+                ),
+              ],
+            ),
           ),
         ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(defaultPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            HeaderTextView(text: 'Stats - Week day'),
-            SizedBox(
-              height: defaultPadding,
-            ),
-            Flexible(
-              flex: 1,
-              child: SfCartesianChart(
-                legend: Legend(overflowMode: LegendItemOverflowMode.none),
-                primaryXAxis: CategoryAxis(
-                  title: AxisTitle(
-                      text: 'Week Days',
-                      textStyle:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
-                ),
-                primaryYAxis: CategoryAxis(isVisible: false),
-                series: <CartesianSeries>[
-                  ColumnSeries<DayOfWeek, String>(
-                    dataLabelSettings: DataLabelSettings(
-                        isVisible: true,
-                        alignment: ChartAlignment.center,
-                        labelAlignment: ChartDataLabelAlignment.middle,
-                        textStyle: TextStyle(color: Colors.white)),
-                    xAxisName: 'Days',
-                    animationDelay: 200,
-                    dataSource: getColumnData(),
-                    xValueMapper: (DayOfWeek dow, _) => dow.x,
-                    yValueMapper: (DayOfWeek dow, _) => dow.y,
-                    pointColorMapper: (DayOfWeek dow, _) => dow.color,
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
       ),
     );
   }
