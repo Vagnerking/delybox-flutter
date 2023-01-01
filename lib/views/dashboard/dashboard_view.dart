@@ -1,5 +1,3 @@
-// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:delybox/components/header_text_view.dart';
 import 'package:delybox/constants.dart';
 import 'package:delybox/providers/auth_provider.dart';
@@ -26,75 +24,109 @@ class _DashboardViewState extends State<DashboardView> {
   Widget build(BuildContext context) {
     return Consumer<AuthProvider>(builder: (context, authProvider, child) {
       return SafeArea(
-        child: Scaffold(
-          drawer: MainDrawer(),
-          appBar: AppBar(
-            toolbarHeight: 65,
-            backgroundColor: primaryBgColor,
-            elevation: 5,
-            actions: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Text('Username'),
-                    CircleAvatar(
-                      radius: 30, // Image radius
-                      backgroundImage:
-                          Image.asset('assets/images/user.jpg').image,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          body: SingleChildScrollView(
-            child: BodyContainer(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  HeaderTextView(
-                    text: 'Dashboard',
-                    useBottomPadding: true,
-                    useDivider: true,
-                  ),
-                  InputCalendar(),
-                  DashboardCards(),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: defaultPadding),
-                    child: Text(
-                      '- View your company statistics -',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Color(0xFF9F9F9F)),
-                    ),
-                  ),
-                  LayoutGrid(
-                    columnSizes: [
-                      Responsive.isMobile(context) ? 1.fr : 2.fr,
-                      if (!Responsive.isMobile(context)) 1.fr
+        child: DefaultTabController(
+          initialIndex: 1,
+          length: 3,
+          child: Scaffold(
+            drawer: MainDrawer(),
+            appBar: AppBar(
+              toolbarHeight: 65,
+              backgroundColor: primaryBgColor,
+              elevation: 5,
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Text('Username'),
+                      CircleAvatar(
+                        radius: 30, // Image radius
+                        backgroundImage:
+                            Image.asset('assets/images/user.jpg').image,
+                      ),
                     ],
-                    rowSizes: [auto, auto],
-                    rowGap: defaultPadding,
-                    columnGap: defaultPadding,
-                    children: [StatsWeekDay(), StatsToday()],
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: defaultPadding),
-                    child: Text(
-                      '- View your company ranking -',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Color(0xFF9F9F9F)),
-                    ),
+                ),
+              ],
+            ),
+            body: TabBarView(
+              children: [Dashboard(), Dashboard(), Dashboard()],
+            ),
+            bottomNavigationBar: Material(
+              color: primaryBgColor,
+              child: TabBar(
+                tabs: [
+                  Tab(
+                    icon: Icon(Icons.send),
                   ),
-                  DashboardRanking(),
+                  Tab(
+                    icon: Icon(Icons.home),
+                  ),
+                  Tab(
+                    icon: Icon(Icons.view_list),
+                  ),
                 ],
+                labelColor: Colors.white,
+                unselectedLabelColor: Colors.white30,
+                indicatorColor: Colors.white,
               ),
             ),
           ),
         ),
       );
     });
+  }
+}
+
+class Dashboard extends StatelessWidget {
+  const Dashboard({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: BodyContainer(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            HeaderTextView(
+              text: 'Dashboard',
+              useBottomPadding: true,
+              useDivider: true,
+            ),
+            InputCalendar(),
+            DashboardCards(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: defaultPadding),
+              child: Text(
+                '- View your company statistics -',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Color(0xFF9F9F9F)),
+              ),
+            ),
+            LayoutGrid(
+              columnSizes: [
+                Responsive.isMobile(context) ? 1.fr : 2.fr,
+                if (!Responsive.isMobile(context)) 1.fr
+              ],
+              rowSizes: [auto, auto],
+              rowGap: defaultPadding,
+              columnGap: defaultPadding,
+              children: [StatsWeekDay(), StatsToday()],
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: defaultPadding),
+              child: Text(
+                '- View your company ranking -',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Color(0xFF9F9F9F)),
+              ),
+            ),
+            DashboardRanking(),
+          ],
+        ),
+      ),
+    );
   }
 }
