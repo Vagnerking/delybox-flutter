@@ -5,13 +5,15 @@ import 'package:flutter/material.dart';
 
 class CardWhite extends StatelessWidget {
   final Widget widget;
+  final double height;
 
-  const CardWhite({Key? key, required this.widget}) : super(key: key);
+  const CardWhite({Key? key, required this.widget, this.height = 350})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 350,
+      height: this.height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(5)),
         color: Colors.white,
