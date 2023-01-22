@@ -82,56 +82,66 @@ class _FormularioState extends State<Formulario> {
             constraints: BoxConstraints(minWidth: 280, maxWidth: 400),
             child: Column(
               children: [
+                TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Username',
+                      hintText: 'Enter your username'),
+                ),
                 SizedBox(
-                  height: Responsive.isMobile(context) ? 60 : 70,
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Username',
-                        hintText: 'Enter your username'),
-                  ),
+                  height: defaultSpace * 2,
+                ),
+                TextField(
+                  obscureText: !passwordVisible,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Password',
+                      hintText: 'Enter your password',
+                      suffixIcon: IconButton(
+                        icon: Icon(passwordVisible
+                            ? Icons.visibility_off
+                            : Icons.visibility),
+                        color: Theme.of(context).primaryColorDark,
+                        onPressed: () {
+                          setState(() => togglePasswordVisibility());
+                        },
+                      )),
                 ),
                 SizedBox(
                   height: defaultPadding,
                 ),
-                SizedBox(
-                  height: Responsive.isMobile(context) ? 60 : 70,
-                  child: TextField(
-                    obscureText: !passwordVisible,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Password',
-                        hintText: 'Enter your password',
-                        suffixIcon: IconButton(
-                          icon: Icon(passwordVisible
-                              ? Icons.visibility
-                              : Icons.visibility_off),
-                          color: Theme.of(context).primaryColorDark,
-                          onPressed: () {
-                            setState(() => togglePasswordVisibility());
-                          },
-                        )),
-                  ),
-                ),
-                SizedBox(
-                  height: defaultPadding / 2,
-                ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: 36,
-                      child: Switch(
-                          value: rememberLogin,
-                          onChanged: (bool value) =>
-                              {setState(() => toggleRememberLogin())}),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 36,
+                          height: 12,
+                          child: Switch(
+                              value: rememberLogin,
+                              onChanged: (bool value) =>
+                                  {setState(() => toggleRememberLogin())}),
+                        ),
+                        SizedBox(width: defaultSpace),
+                        MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                            child: Text(
+                              'Remember-me',
+                              style: TextStyle(fontSize: 14),
+                            ),
+                            onTap: () {
+                              setState(() => toggleRememberLogin());
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(width: defaultPadding / 2),
-                    Text('Remember-me'),
                   ],
                 ),
                 SizedBox(
-                  height: defaultPadding,
+                  height: defaultPadding * 2,
                 ),
                 Row(
                   children: [
@@ -163,39 +173,49 @@ class _FormularioState extends State<Formulario> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        textStyle: TextStyle(fontSize: 16),
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        child: Text(
+                          'Forget my username or password',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: primaryBgColor,
+                              decoration: TextDecoration.underline),
+                        ),
+                        onTap: () {
+                          print('clicked on forget my username or password');
+                        },
                       ),
-                      onPressed: () {
-                        print('Clicked on forget username or password');
-                      },
-                      child: const Text(
-                        'Forget my username or password',
-                        style: TextStyle(
-                            color: primaryBgColor,
-                            decoration: TextDecoration.underline),
-                      ),
+                    ),
+                    SizedBox(
+                      height: defaultPadding / 2,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Don't have a account?"),
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            textStyle: TextStyle(fontSize: 16),
-                          ),
-                          onPressed: () {
-                            print('Clicked on dont have account');
-                          },
-                          child: Text(
-                            'Click Here!',
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: linkColorPrimary,
-                                decoration: TextDecoration.underline),
-                          ),
+                        Text(
+                          "Don't have a account?",
+                          style: TextStyle(fontSize: 14),
                         ),
+                        SizedBox(
+                          width: defaultSpace,
+                        ),
+                        MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                            child: Text(
+                              'Click Here!',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: linkColorPrimary,
+                                  decoration: TextDecoration.underline),
+                            ),
+                            onTap: () {
+                              print('clicked on dont have account');
+                            },
+                          ),
+                        )
                       ],
                     )
                   ],

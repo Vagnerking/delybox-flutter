@@ -1,9 +1,10 @@
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable, prefer_const_constructors
 
 import 'package:delybox/app_providers.dart';
-import 'package:delybox/views/companies/companies_view.dart';
-import 'package:delybox/views/dashboard/dashboard_view.dart';
-import 'package:delybox/views/login/login_view.dart';
+import 'package:delybox/views/companies/companies.view.dart';
+import 'package:delybox/views/dashboard/dashboard.view.dart';
+import 'package:delybox/views/login/login.view.dart';
+import 'package:delybox/views/main/main.view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +33,9 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => LoginView(),
           '/companies': (context) => CompaniesView(),
-          '/dashboard': (context) => DashboardView(),
+          '/dashboard': (context) => MainView(startPageIndex: 1),
+          '/send_order': (context) => MainView(startPageIndex: 0),
+          '/order_list': (context) => MainView(startPageIndex: 2),
         },
         // home: MainView(page: Dashboard()),
       ),

@@ -7,39 +7,19 @@ import '../../../constants.dart';
 class LoginTopDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: defaultPadding),
-      constraints: BoxConstraints(minWidth: 280, maxWidth: 400),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Text(
-                'Delybox',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.headlineLarge,
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Flexible(
-                child: Text(
-                  'Sign in now!',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.w300,
-                      color: Colors.black54,
-                      fontSize: 18,
-                      height: 1.1),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Image.asset('assets/images/delybox-dark.png'),
+        Text('Sign in now!',
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+                color: Colors.black45)),
+      ],
     );
   }
 }

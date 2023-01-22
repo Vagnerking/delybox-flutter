@@ -14,6 +14,7 @@ const companyTextColor = Color(0xFF363636);
 
 const defaultBorderColor = Color(0xFFE2E2E2);
 
+const defaultSpace = 6.0;
 const defaultPadding = 16.0;
 const defaultHeaderFontSize = 24.0;
 const defaultCardFontSizeAmount = 28.0;
