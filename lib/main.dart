@@ -1,7 +1,7 @@
 import 'package:delybox/app_providers.dart';
-import 'package:delybox/views/companies/companies_view.dart';
-import 'package:delybox/views/login/login_view.dart';
-import 'package:delybox/views/main/main_view.dart';
+import 'package:delybox/views/companies/companies.view.dart';
+import 'package:delybox/views/login/login.view.dart';
+import 'package:delybox/views/main/main.view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

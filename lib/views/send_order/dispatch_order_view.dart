@@ -1,7 +1,7 @@
 import 'package:delybox/components/card_white.dart';
 import 'package:delybox/components/header_text_view.dart';
 import 'package:delybox/constants.dart';
-import 'package:delybox/views/body_container/body_container.dart';
+import 'package:delybox/views/body_container/body_container.widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
