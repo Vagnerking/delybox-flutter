@@ -91,7 +91,7 @@ class MainDrawer extends StatelessWidget {
                     ),
                     onTap: () {
                       print('clicked on orders item menu');
-                      Navigator.of(context).pushNamed('/orders');
+                      Navigator.of(context).pushNamed('/send_order');
                     },
                   ),
                 ],

@@ -45,6 +45,7 @@ dependencies:
   syncfusion_flutter_charts: ^20.4.38
   flutter_layout_grid: ^1.0.3
   data_table_2: ^2.3.10
+  dropdown_button2: ^2.0.0
 
 dev_dependencies:
   flutter_test:
